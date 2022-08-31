@@ -15,4 +15,4 @@ class MainBankPage(WebPage):
     def go_to_section(self, search_section):
         for page_section in self.sections:
             if page_section == search_section:
-                self.page.click('')  # click on page_section var in locator
+                self.page.click(f'//a[@class="dark:link-text-tertiary link  py-5 link-b-bg" and text()="{page_section}"]')
