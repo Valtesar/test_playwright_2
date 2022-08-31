@@ -6,4 +6,4 @@ def get_url_from_txt():
     r = re.compile(r"(http://[^ ]+)")
     urls = r.sub(r'<a href="\1">\1</a>', urls_text).split('\n')
     for url in urls:
-        yield url
+        return url
