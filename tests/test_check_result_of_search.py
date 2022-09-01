@@ -44,5 +44,4 @@ def test_check_result_of_search(main_search_page):
     search_page.search_text('Совкомбанк')
     search_page.get_stats()
     assert search_page.get_url_on_page()
-
-
+    search_page.close_page()
