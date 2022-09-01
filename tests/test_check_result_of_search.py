@@ -6,8 +6,8 @@ from playwright.sync_api import Page
 from search_url import get_url_from_txt
 from pages.search_engine.main_search_page import SearchPage
 import logging
-import unittest
-from  time import sleep
+
+
 logger = logging.getLogger("tests")
 
 
