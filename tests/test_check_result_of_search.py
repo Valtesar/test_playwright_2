@@ -6,8 +6,8 @@ from playwright.sync_api import Page
 from search_url import get_url_from_txt
 from pages.search_engine.main_search_page import SearchPage
 import logging
-
-
+import unittest
+from  time import sleep
 logger = logging.getLogger("tests")
 
 
@@ -19,7 +19,7 @@ def data_dir(tmpdir, request):
     if os.path.isdir(test_dir):
         dir_util.copy_tree(test_dir, str(tmpdir))
 
-    return tmpdir
+        return tmpdir
 
 
 @pytest.fixture()
@@ -44,5 +44,6 @@ def test_check_result_of_search(main_search_page):
     search_page.search_text('Совкомбанк')
     search_page.get_stats()
     assert search_page.get_url_on_page()
+    search_page.close_page()
 
 
