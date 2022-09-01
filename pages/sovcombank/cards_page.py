@@ -1,3 +1,4 @@
+from playwright.sync_api import expect
 from pages.sovcombank.main_bank_page import MainBankPage
 from time import sleep
 
@@ -22,16 +23,9 @@ class CardsPage(MainBankPage):
     def edit_check_box_order(self):
         """Убираем из чек бокса галочку"""
 
-        #self.new_page.expect_request('https://halvacard.ru/order/page-data/app-data.json')
-       # self.new_page.on("request", lambda request: print(">>", request.method, request.url))
-        # self.new_page.on("response", lambda response: print("<<", response.status, response.url))
-        self.new_page.wait_for_load_state("load", timeout=5000)
-        # sleep(5)
-        if self.new_page.is_checked('//input[@type="checkbox"]'):
-            self.new_page.set_checked('//input[@type="checkbox"]', checked=False, force=True, no_wait_after=True)
-        else:
-            raise Exception('Checkbox already unchecked')
-        sleep(5)
+        locator = self.new_page.locator('//input[@type="checkbox"]')
+        expect(locator).to_be_checked()
+        self.new_page.uncheck('//input[@type="checkbox"]')
 
     def get_check_box_error(self):
         """Получаем уведомление об ошибке, если оно есть - возвращаем 1, нет 0"""
