@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import Page
 from pages.sovcombank.cards_page import CardsPage
 import logging
-from time import sleep
+
 
 logger = logging.getLogger("tests")
 
@@ -23,3 +23,4 @@ def test_validation_message_is_visible(main_bank_page):
     bank_page.edit_check_box_order()
     assert bank_page.get_check_box_error()
     assert bank_page.get_fields_and_warnings()
+    bank_page.close_page()
