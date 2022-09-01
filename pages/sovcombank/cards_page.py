@@ -1,3 +1,6 @@
+
+from playwright.sync_api import expect
+
 from pages.sovcombank.main_bank_page import MainBankPage
 from time import sleep
 
@@ -5,6 +8,8 @@ from time import sleep
 class CardsPage(MainBankPage):
 
     def order_halva_card(self):
+
+
         """Функция кликает на кнопку заказать карту используя джаваскрипт скрипт.
             Далее переключается на новую вкладку"""
 
@@ -23,19 +28,11 @@ class CardsPage(MainBankPage):
         return self
 
     def edit_check_box_order(self):
-        """Функция проверяет если чек бокс отмечен, то снимает отметку.
-            Если отметки уже не было вызывает исключение."""
+        """Убираем из чек бокса галочку"""
 
-        #self.new_page.expect_request('https://halvacard.ru/order/page-data/app-data.json')
-       # self.new_page.on("request", lambda request: print(">>", request.method, request.url))
-        # self.new_page.on("response", lambda response: print("<<", response.status, response.url))
-        self.new_page.wait_for_load_state("load", timeout=5000)
-        # sleep(5)
-        if self.new_page.is_checked('//input[@type="checkbox"]'):
-            self.new_page.set_checked('//input[@type="checkbox"]', checked=False, force=True, no_wait_after=True)
-        else:
-            raise Exception('Checkbox already unchecked')
-        sleep(5)
+        locator = self.new_page.locator('//input[@type="checkbox"]')
+        expect(locator).to_be_checked()
+        self.new_page.uncheck('//input[@type="checkbox"]')
 
     def get_check_box_error(self):
         """Функция проверяет наличие уведомления об ошибке если чекбокс снят.
@@ -61,3 +58,4 @@ class CardsPage(MainBankPage):
             return True
         elif len(fields) != len(errors):
             return False
+
