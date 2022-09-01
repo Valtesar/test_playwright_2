@@ -50,4 +50,3 @@ def test_check_result_of_search(main_search_page):
     assert search_page.get_url_on_page()
     search_page.close_page()
 
-

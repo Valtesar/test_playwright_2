@@ -7,15 +7,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+
   <component name="PackageRequirementsSettings">
     <option name="requirementsPath" value="" />
   </component>
-<<<<<<< HEAD
-=======
-  <component name="PackageRequirementsSettings">
-    <option name="requirementsPath" value="" />
-  </component>
->>>>>>> master
+
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="pytest" />
   </component>
