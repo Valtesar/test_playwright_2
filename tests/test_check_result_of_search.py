@@ -19,7 +19,7 @@ def data_dir(tmpdir, request):
     if os.path.isdir(test_dir):
         dir_util.copy_tree(test_dir, str(tmpdir))
 
-        return tmpdir
+    return tmpdir
 
 
 @pytest.fixture()
