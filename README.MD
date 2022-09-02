@@ -8,6 +8,7 @@ Use for research purposes only at your own risk.
 
 <h2>Installation</h2>
 -
+
 * If you are using a virtual environment use the command
 
         pytest setup.py
