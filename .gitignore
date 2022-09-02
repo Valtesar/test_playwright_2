@@ -3,3 +3,5 @@
 /.idea
 /.pytest_cache
 /__cache__
+/tests/test_check_result_of_search.egg-info/
+/tests/.eggs/
