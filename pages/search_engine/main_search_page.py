@@ -20,8 +20,12 @@ class SearchPage(WebPage):
 
     def get_stats(self):
         value = self.page.locator('//*[@id="result-stats"]').all_inner_texts()
-        """!!!!Добавить регулярное выражение для корректного отображения кол-ва результатов поиска!!!!!!"""
-        print(value)
+        value = str(value).split()[2]
+        print('Примерное кол-во найденных результатов: ', end='')
+        for num in value:
+            if num.isdigit():
+                print(num, sep='', end='')
+
         return self
 
     def get_url_on_page(self):
