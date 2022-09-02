@@ -19,4 +19,4 @@ Use for research purposes only at your own risk.
 -
 Example of a successfully completed test.
 
-![alt text](https://github.com/[Valtesar]/[autotests_ui_playwright]/images/[develop]/3passed.jpg?raw=true)
+![alt text](https://github.com/Valtesar/autotests_ui_playwright/blob/develop/images/3passed.JPG?raw=true)
