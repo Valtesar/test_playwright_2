@@ -1,15 +1,10 @@
-
 from playwright.sync_api import expect
-
 from pages.sovcombank.main_bank_page import MainBankPage
-from time import sleep
 
 
 class CardsPage(MainBankPage):
 
     def order_halva_card(self):
-
-
         """Функция кликает на кнопку заказать карту используя джаваскрипт скрипт.
             Далее переключается на новую вкладку"""
 
@@ -28,7 +23,8 @@ class CardsPage(MainBankPage):
         return self
 
     def edit_check_box_order(self):
-        """Убираем из чек бокса галочку"""
+        """Функция проверяет если чек бокс отмечен, то снимает отметку.
+            Если отметки уже не было вызывает исключение."""
 
         locator = self.new_page.locator('//input[@type="checkbox"]')
         expect(locator).to_be_checked()
