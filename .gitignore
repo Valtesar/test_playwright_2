@@ -2,3 +2,4 @@
 /tests/.pytest_cache
 /.idea
 /.pytest_cache
+/__cache__
