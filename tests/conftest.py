@@ -4,6 +4,8 @@ import os
 from playwright.sync_api import Page
 from search_url import get_url_from_txt
 from pages.search_engine.main_search_page import SearchPage
+from playwright.sync_api import Page
+from pages.sovcombank.credits_page import CreditsPage
 
 
 def pytest_addoption(parser):
@@ -46,3 +48,11 @@ def main_search_page(page: Page, get_link_from_file):
     search_page.delete_cookies()
     search_page.open()
     return search_page
+
+
+@pytest.fixture()
+def main_bank_page(page: Page):
+    bank_page = CreditsPage('https://sovcombank.ru', page)
+    bank_page.delete_cookies()
+    bank_page.open()
+    return bank_page
