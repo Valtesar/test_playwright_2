@@ -17,7 +17,7 @@ class TestValidationMessageIsVisible:
             Созает словарь с ключом в виде названия поля и значением текстом ошибки.
             Выводит словарь в консоль.
             Закрывает текущую вкладку и переходит на предыдущую."""
-
+        
         bank_page = main_bank_page
         bank_page.go_to_section('Карты')
         bank_page.order_halva_card()
