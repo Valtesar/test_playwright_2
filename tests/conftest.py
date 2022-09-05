@@ -4,8 +4,8 @@ import os
 from playwright.sync_api import Page
 from search_url import get_url_from_txt
 from pages.search_engine.main_search_page import SearchPage
-from playwright.sync_api import Page
 from pages.sovcombank.credits_page import CreditsPage
+from pages.sovcombank.cards_page import CardsPage
 
 
 def pytest_addoption(parser):
@@ -54,6 +54,15 @@ def main_search_page(page: Page, get_link_from_file):
 @pytest.fixture()
 def main_bank_page(page: Page):
     bank_page = CreditsPage('https://sovcombank.ru', page)
+    bank_page.delete_cookies()
+    bank_page.open()
+    return bank_page
+
+
+@pytest.mark.onlytest("test_halva_card_order")
+@pytest.fixture()
+def main_bank_page(page: Page):
+    bank_page = CardsPage('https://sovcombank.ru', page)
     bank_page.delete_cookies()
     bank_page.open()
     return bank_page
