@@ -50,6 +50,7 @@ def main_search_page(page: Page, get_link_from_file):
     return search_page
 
 
+@pytest.mark.onlytest("test_download_credit_file")
 @pytest.fixture()
 def main_bank_page(page: Page):
     bank_page = CreditsPage('https://sovcombank.ru', page)
