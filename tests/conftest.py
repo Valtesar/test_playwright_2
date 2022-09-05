@@ -1,4 +1,11 @@
 import pytest
+from distutils import dir_util
+import os
+from playwright.sync_api import Page
+from search_url import get_url_from_txt
+from pages.search_engine.main_search_page import SearchPage
+from pages.sovcombank.credits_page import CreditsPage
+from pages.sovcombank.cards_page import CardsPage
 
 
 def pytest_addoption(parser):
@@ -11,3 +18,51 @@ def pytest_collection_finish(session):
         for item in session.items:
             print('{}::{}'.format(item.fspath, item.name))
         pytest.exit('Done!')
+
+
+@pytest.mark.onlytest("test_check_result_of_search")
+@pytest.fixture()
+def data_dir(tmpdir, request):
+    filename = request.module.__file__
+    test_dir, _ = os.path.splitext(filename)
+
+    if os.path.isdir(test_dir):
+        dir_util.copy_tree(test_dir, str(tmpdir))
+
+    return tmpdir
+
+
+@pytest.mark.onlytest("test_check_result_of_search")
+@pytest.fixture()
+def get_link_from_file(data_dir):
+    file = data_dir.join('urls.txt')
+    with open(file) as text_file:
+        link = get_url_from_txt(text_file.read())
+    return link
+
+
+@pytest.mark.onlytest("test_check_result_of_search")
+@pytest.fixture()
+def main_search_page(page: Page, get_link_from_file):
+    search_page = SearchPage(get_link_from_file, page)
+    search_page.delete_cookies()
+    search_page.open()
+    return search_page
+
+
+@pytest.mark.onlytest("test_download_credit_file")
+@pytest.fixture()
+def main_bank_page(page: Page):
+    bank_page = CreditsPage('https://sovcombank.ru', page)
+    bank_page.delete_cookies()
+    bank_page.open()
+    return bank_page
+
+
+@pytest.mark.onlytest("test_halva_card_order")
+@pytest.fixture()
+def main_bank_page(page: Page):
+    bank_page = CardsPage('https://sovcombank.ru', page)
+    bank_page.delete_cookies()
+    bank_page.open()
+    return bank_page
