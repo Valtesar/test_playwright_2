@@ -8,6 +8,9 @@ Use for research purposes only at your own risk.
 
 <h2>Installation</h2>
 
+Before running tests to set up dependencies, use the command:
+
+`pip install -r requirements.txt`
 
 * If you are using a virtual environment use the command
 
