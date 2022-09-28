@@ -12,11 +12,11 @@ Before running tests to set up dependencies, use the command:
 
 `pip install -r requirements.txt`
 
-* If you are using a virtual environment use the command
+* If you are using a virtual environment use the command while in the folder <tests>
 
         pytest setup.py
 
-* If you are not using a virtual environment use the command 
+* If you are not using a virtual environment use the command while in the folder <tests>
 
         python pytest setup.py
 <h2>Example</h2>
